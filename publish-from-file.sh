@@ -17,5 +17,5 @@ while read p; do
   payload=$(echo $p| awk 'BEGIN { FS = "|" } ; { print $1 }')
   properties=$(echo $p| awk 'BEGIN { FS = "|" } ; { print $2 }')
   CMD=$'rabbitmqadmin publish exchange='${EXCHANGE}' routing_key='$ROUTING_KEY' payload="'$payload'" properties='$properties' -u '$USER' -p '$PASSWORD
-  $CMD
+  $CMD &
 done <$FILE
